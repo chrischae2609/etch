@@ -1,0 +1,24 @@
+.grid {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+}
+
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cell {
+    background-color: black;
+    box-sizing: border-box;
+}
+
+.cell:hover {
+    background-color: pink;
+}
