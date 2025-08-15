@@ -1,43 +1,60 @@
 
 const grid = document.querySelector(".grid");
-let squares = document.getElementById("squares")
+const newGridButton = document.getElementById("newGrid")
 
+function createGrid() {
+    for (let i = 0; i < 16; i++) {
+        const column = document.createElement('div');
+        column.classList.add('column');
+        column.style.width = `${600 / 16}px`;
+        column.style.heght = '600px';
+        column.style.margin = '0.5px';
+        grid.appendChild(column);
+        for (let i = 0; i < 16; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.style.height = `${600 / 16}px`;
+            cell.style.margin = '0.5px';
 
+            cell.addEventListener("mouseenter", () => {
+                cell.style.backgroundColor='white';
+            });
+            column.appendChild(cell);
+        
 
-for (let i = 0; i < 20; i++) {
-    const column = document.createElement('div');
-    column.classList.add('column');
-    column.style.width = `${600 / 20}px`;
-    column.style.heght = '600px';
-    column.style.margin = '0.5px';
-    grid.appendChild(column);
-    for (let i = 0; i < 20; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        // cell.style.width = `${600 / 16}px`;
-        cell.style.height = `${600 / 20}px`;
-        cell.style.margin = '0.5px';
-        column.appendChild(cell);
+        }
     }
 }
 
+createGrid();
 
-// for (let i = 0; i < squares; i++) {
-//     const column = document.createElement('div');
-//     column.classList.add('column');
-//     column.style.width = `${600 / squares}px`;
-//     column.style.heght = '600px';
-//     column.style.margin = '0.5px';
-//     grid.appendChild(column);
-//     for (let i = 0; i < squares; i++) {
-//         const cell = document.createElement('div');
-//         cell.classList.add('cell');
-//         // cell.style.width = `${600 / 16}px`;
-//         cell.style.height = `${600 / squares}px`;
-//         cell.style.margin = '0.5px';
-//         column.appendChild(cell);
-//     }
-// }
+newGridButton.addEventListener('click', function() {
+    grid.innerHTML = '';
+    const squares = parseInt(prompt("How many squares?"), 10);
+    if (squares < 1 || squares > 100) {
+        alert("Please choose a number between 1 and 100")
+    } else {
+        for (let i = 0; i < squares; i++) {
+            const column = document.createElement('div');
+            column.classList.add('column');
+            column.style.width = `${600 / squares}px`;
+            column.style.heght = '600px';
+            column.style.margin = '0.5px';
+            grid.appendChild(column);
+            for (let i = 0; i < squares; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.style.height = `${600 / squares}px`;
+                cell.style.margin = '0.5px';
+                cell.addEventListener("mouseenter", () => {
+                    cell.style.backgroundColor='white';
+                });
+                column.appendChild(cell);
+            }
+        }
+    }
+})
+
 
 
 // pseudocode
